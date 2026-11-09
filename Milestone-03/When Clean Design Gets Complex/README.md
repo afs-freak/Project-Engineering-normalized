@@ -255,3 +255,26 @@ Your work will then be **reviewed before being merged**.
 - **All work must happen inside your fork**
 
 This ensures the **original codebase remains unchanged and stable**.
+
+---
+
+# Completed Solution
+
+This submission adds a 3NF redesign and updates the product queries to use explicit joins.
+
+| Deliverable | Location |
+| --- | --- |
+| Normalized schema | `schema/normalized_schema.sql` |
+| Updated product queries | `queries/product_queries.sql` |
+| Design analysis and trade-offs | `docs/normalization-notes.md` |
+| Automated smoke test | `test_normalized_schema.py` |
+
+The normalized schema separates suppliers, products, categories, tags, warehouses, and inventory. Many-to-many relationships are represented by `product_categories` and `product_tags`, while warehouse-specific quantities are stored in `inventory`.
+
+Run the verification from this directory:
+
+```bash
+python3 test_normalized_schema.py
+```
+
+The test loads representative data, executes the four required query patterns, checks expected join results, and verifies integrity constraints.
